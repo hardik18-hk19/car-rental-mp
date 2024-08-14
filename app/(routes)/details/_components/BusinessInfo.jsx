@@ -1,0 +1,54 @@
+"use client";
+
+import { Car, Clock, Mail, MapPin, Share, User } from "lucide-react";
+import Image from "next/image";
+import React from "react";
+import { Button } from "/components/ui/button";
+import { TbReceiptRupee } from "react-icons/tb";
+
+import { FaMoneyBill, FaRupeeSign } from "react-icons/fa";
+
+function BusinessInfo({ business }) {
+  return (
+    business?.name && (
+      <div className="md:flex gap-4 items-center">
+        <Image
+          src={business?.images[0]?.url}
+          alt={business.name}
+          width={150}
+          height={200}
+          className="rounded-full h-[150px] object-fill"
+        />
+        <div className="flex justify-between items-center w-full">
+          <div className="flex flex-col mt-4 md:mt-0 items-baseline gap-3">
+            <h2 className="text-primary p-1 px-3 text-lg bg-purple-100 rounded-full ">
+              {business?.category?.name}
+            </h2>
+            <h2 className="text-[40px] font-bold">{business.carName}</h2>
+            <h2 className="flex gap-2 text-lg text-primary ">
+              <TbReceiptRupee />
+              {"₹"}
+              {business.price}
+              {"/day"}
+            </h2>
+          </div>
+          <div className="flex flex-col gap-5 items-end">
+            {/* <Button className="mr-5 text-white p-1">
+              <Share className="h-4 w-4 " />
+            </Button> */}
+            <h2 className="flex gap-2 text-xl text-primary">
+              {" "}
+              <Car /> {business.carName}{" "}
+            </h2>
+            <h2 className="flex gap-2 text-xl text-gray-500">
+              {" "}
+              <Clock /> Available 6:00 AM to 12:00 PM{" "}
+            </h2>
+          </div>
+        </div>
+      </div>
+    )
+  );
+}
+
+export default BusinessInfo;
